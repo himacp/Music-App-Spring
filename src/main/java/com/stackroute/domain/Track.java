@@ -2,9 +2,13 @@ package com.stackroute.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 
 @Entity
-public class Track{
+public class Track {
     @Id
     private int trackId;
     private String trackName;
@@ -45,7 +49,7 @@ public class Track{
 
     @Override
     public String toString() {
-        return "Mozix{" +
+        return "Track{" +
                 "trackName='" + trackName + '\'' +
                 ", trackId=" + trackId +
                 ", trackComments='" + trackComments + '\'' +
