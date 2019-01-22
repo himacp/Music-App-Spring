@@ -1,35 +1,59 @@
 package com.stackroute.service;
 
+
 import com.stackroute.domain.Track;
 import com.stackroute.repository.TrackRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
-public class TrackServiceImpl implements TrackService
-{
-        TrackRepository trackRepository;
+@Service
+public class TrackServiceImpl implements TrackService{
 
-        @Autowired
-        public TrackServiceImpl(TrackRepository trackRepository) {
-            this.trackRepository = trackRepository;
-        }
+    TrackRepository trackRepository;
 
-        @Override
-        public Track saveTrack(Track track)
-
-        {
-
-            Track savedTrack = trackRepository.save(track);
-
-            return savedTrack;
-        }
+    @Autowired
+    public TrackServiceImpl(TrackRepository trackRepository)
+    {
+        this.trackRepository=trackRepository;
+    }
+    @Override
+    public Track saveTrack(Track track) {
+        Track savedTrack=trackRepository.save(track);
+        return savedTrack;
+    }
 
     @Override
-    public List<Track> getAllTracks() {
+    public List<Track> getAllTrack() {
         return trackRepository.findAll();
     }
 
+    @Override
+    public boolean deleteTrack(int id) {
+        trackRepository.deleteById(id);
+        return true;
     }
 
+    @Override
+    public Track updateTrack(Track track) {
+        Track updateTrack= trackRepository.save(track);
+        return updateTrack;
+    }
 
+    @Override
+    public Optional<Track> getTrackById(int id) {
+
+        if(trackRepository.existsById(id))
+        {
+            return trackRepository.findById(id);
+        }
+        return null;
+    }
+    @Override
+    public List<Track> getTrackByName(String name) {
+        return trackRepository.getTrackByName(name);
+
+        }
+    }
