@@ -38,19 +38,20 @@ public class TrackServiceApplication implements ApplicationListener<ContextRefre
         public static void main(String[] args) {
             SpringApplication.run(TrackServiceApplication.class, args);
         }
-
+    @Autowired
+    private Environment ev;
 
         @Override
         public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
             trackRepository.save(new Track(Integer.parseInt(ev.getProperty("trackId")),ev.getProperty("trackName"),ev.getProperty("trackComments")));
 
         }
-    @Autowired
-    private Environment ev;
+
 
         @Override
-        public void run(String...args) throws Exception {
+        public void run(String...args){
             trackRepository.save(new Track(trackId,trackName,trackComments));
+
 
         }
 }

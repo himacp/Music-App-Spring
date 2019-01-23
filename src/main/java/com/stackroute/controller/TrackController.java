@@ -13,7 +13,7 @@ import java.util.Optional;
 @RequestMapping(value = "api/v1")
 public class TrackController {
 
-    TrackService trackService;
+    private TrackService trackService;
 
     @Autowired
     public TrackController(TrackService trackService)
@@ -37,7 +37,7 @@ public class TrackController {
         return responseEntity;
     }
 
-    @GetMapping("track")
+    @GetMapping("/track/{id}")
     public ResponseEntity<List<Track>> getAllUser()
     {
         ResponseEntity responseEntity;
@@ -58,6 +58,7 @@ public class TrackController {
         try
         {
             trackService.updateTrack(track);
+
             responseEntity=new ResponseEntity<String>("Successfully Updated", HttpStatus.CREATED);
         }
         catch( Exception ex)
@@ -82,7 +83,7 @@ public class TrackController {
         return responseEntity;
     }
 
-    @GetMapping(value = "/track/{id}")
+    @GetMapping(value = "track/{id}")
     public ResponseEntity<?> getByIdTrack(@PathVariable int id)
     {
         ResponseEntity responseEntity;
