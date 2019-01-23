@@ -24,12 +24,12 @@ public class TrackServiceApplication implements ApplicationListener<ContextRefre
 
         @Override
         public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
-                trackRepository.save(new Track("himaa",34,"error"));
+                trackRepository.save(new Track(1,"hima","error"));
         }
 
         @Override
         public void run(String...args) throws Exception {
-                trackRepository.save(new Track("prabha",35,"highfive"));
+                trackRepository.save(new Track(12,"prabha","highfive"));
         }
 }
 

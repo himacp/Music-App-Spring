@@ -49,15 +49,12 @@ public class TrackServiceImpl implements TrackService{
             throw new TrackNotFoundException("ID is not found");
         }
         trackRepository.deleteById(id);
+
         return 0;
     }
 
     @Override
-    public Track updateTrack(Track track) throws TrackNotFoundException{
-        if( !trackRepository.existsById(track.getTrackId()))
-        {
-            throw new TrackNotFoundException("No updation is found");
-        }
+    public Track updateTrack(Track track){
         Track updateTrack= trackRepository.save(track);
         return updateTrack;
     }
