@@ -1,6 +1,4 @@
 package com.stackroute.service;
-
-
 import com.stackroute.exception.TrackAlreadyExistsException;
 import com.stackroute.exception.TrackNotFoundException;
 import com.stackroute.domain.Track;
@@ -12,10 +10,12 @@ import java.util.List;
 import java.util.Optional;
 
 
+//Service Implementation
+
 @Service
 public class TrackServiceImpl implements TrackService{
 
-    TrackRepository trackRepository;
+   private TrackRepository trackRepository;
 
     @Autowired
     public TrackServiceImpl(TrackRepository trackRepository)
@@ -36,7 +36,7 @@ public class TrackServiceImpl implements TrackService{
         }
         return savedTrack;
     }
-
+//ALL TRACKS
     @Override
     public List<Track> getAllTrack() {
         return trackRepository.findAll();
@@ -53,13 +53,13 @@ public class TrackServiceImpl implements TrackService{
 
         return 0;
     }
-
+//UPDATE OF TRACKS
     @Override
     public Track updateTrack(Track track){
         Track updateTrack= trackRepository.save(track);
         return updateTrack;
     }
-
+//GET THE TRACK BY ITS ID
     @Override
     public Optional<Track> getTrackById(int id) throws TrackNotFoundException{
 
@@ -74,7 +74,7 @@ public class TrackServiceImpl implements TrackService{
             throw new TrackNotFoundException("Given ID is not there");
         }
     }
-
+//GET THE TRACK BY IT'S NAME
     @Override
     public List<Track> getTrackByName(String name) throws TrackNotFoundException {
 
