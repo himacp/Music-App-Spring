@@ -28,7 +28,7 @@ public class TrackServiceApplication implements ApplicationListener<ContextRefre
         }
 
         @Override
-        public void run(String...args) throws Exception {
+        public void run(String...args) {
                 trackRepository.save(new Track("prabha",35,"highfive"));
         }
 }
