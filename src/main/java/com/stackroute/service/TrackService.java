@@ -11,7 +11,7 @@ import java.util.Optional;
 
 public interface TrackService {
     public Track saveTrack(Track track) throws TrackAlreadyExistsException, TrackNotFoundException;
-    public List<Track> getAllTrack();
+    public List<Track> getAllTrack()throws TrackAlreadyExistsException;
     public int deleteTrack(int id) throws TrackNotFoundException;
     public Track updateTrack(Track track) throws TrackNotFoundException;
     public Optional<Track> getTrackById(int id) throws TrackNotFoundException;

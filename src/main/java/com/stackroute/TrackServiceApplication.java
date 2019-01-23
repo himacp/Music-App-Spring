@@ -35,11 +35,15 @@ public class TrackServiceApplication implements ApplicationListener<ContextRefre
 
         @Autowired
         TrackRepository trackRepository;
+
+
         public static void main(String[] args) {
             SpringApplication.run(TrackServiceApplication.class, args);
         }
-    @Autowired
-    private Environment ev;
+
+
+        @Autowired
+        private Environment ev;
 
         @Override
         public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
